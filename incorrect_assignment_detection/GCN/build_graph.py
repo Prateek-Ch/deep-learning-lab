@@ -23,6 +23,10 @@ stopwords_check = ['a', 'was', 'were', 'that', '2', 'key', '1', 'technology', '0
                     'two', '6', 'has', 'h', 'after', 'different', 'n', 'national', 'japan', 'have', 'cell',
                     'time', 'zhejiang', 'used', 'data', 'these']
 
+#1.Use the unidecode function to convert Unicode characters in the name to ASCII characters.
+#2.Convert the name to lowercase letters.
+#3.Check each character in the name; if it's a letter, keep it; otherwise, replace it with a space.
+#4.Finally, strip any spaces from the beginning and end of the string, and return the result.
 def clean_name(name):
     # print(name)
     name = unidecode(name)
@@ -35,7 +39,8 @@ def clean_name(name):
             new_name = new_name.strip()
             new_name += " "
     return new_name.strip()
-    
+
+#check if two names are same
 def simple_name_match(n1,n2):
     n1_set = set(n1.split())
     n2_set = set(n2.split())
@@ -46,7 +51,8 @@ def simple_name_match(n1,n2):
     if(len(com_set) == len(n1_set)):
         return True
     return False
-    
+
+#The function calculates the similarity score between two organization or venue attributes based on the score of common words and normalization processing.
 def org_venue_features(n1_attr, n2_attr, score_dict, default_value):
     n1_attr_set = set(n1_attr.split())
     n2_attr_set = set(n2_attr.split())
@@ -120,7 +126,7 @@ def co_occurance(core_name, paper1, paper2):
     covenue_weight = jaccard_similarity(n1_venue,n2_venue)
 
     return matched, coauthor_weight, coorg_weight, covenue_weight
-
+#retrieves the paper information belonging to a given author ID and transforms this information into a format suitable for constructing graph data.
 def getdata(orcid):
     trainset = True 
     if "normal_data" in author_names[orcid]:
