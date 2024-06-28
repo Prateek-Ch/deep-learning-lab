@@ -1,0 +1,94 @@
+[2024-06-27 16:29:00] {train.py:83} INFO - Namespace(train_dir='../dataset/train.pkl', eval_dir=None, test_dir='../dataset/valid.pkl', saved_dir='saved_model', log_name='log', epochs=50, seed=1, lr=0.0005, min_lr=0.0002, bs=1, input_dim=768, output_dim=768, verbose=1, usecoo=False, usecov=False, threshold=0)
+[2024-06-27 16:29:05] {train.py:100} INFO - # Batch: 545 - 545.0
+[2024-06-27 16:29:05] {train.py:105} INFO - max_step: 5450, 545, 1, 50
+[2024-06-27 16:29:11] {train.py:154} INFO - Epoch:0 Overall loss: 0.184658 
+[2024-06-27 16:29:11] {train.py:197} INFO - Epoch: 0 Auc: 0.573895 Maps: 0.702374 Max-Auc: -1.000000 Max-Maps: -1.000000
+[2024-06-27 16:29:11] {train.py:207} INFO - ***************** Epoch: 0 Max Auc: 0.573895 Maps: 0.702374 *******************
+[2024-06-27 16:29:17] {train.py:154} INFO - Epoch:1 Overall loss: 0.168869 
+[2024-06-27 16:29:18] {train.py:197} INFO - Epoch: 1 Auc: 0.580879 Maps: 0.708692 Max-Auc: 0.573895 Max-Maps: 0.702374
+[2024-06-27 16:29:18] {train.py:207} INFO - ***************** Epoch: 1 Max Auc: 0.580879 Maps: 0.708692 *******************
+[2024-06-27 16:29:24] {train.py:154} INFO - Epoch:2 Overall loss: 0.164964 
+[2024-06-27 16:29:24] {train.py:197} INFO - Epoch: 2 Auc: 0.584627 Maps: 0.707755 Max-Auc: 0.580879 Max-Maps: 0.708692
+[2024-06-27 16:29:24] {train.py:207} INFO - ***************** Epoch: 2 Max Auc: 0.584627 Maps: 0.708692 *******************
+[2024-06-27 16:29:30] {train.py:154} INFO - Epoch:3 Overall loss: 0.161864 
+[2024-06-27 16:29:31] {train.py:197} INFO - Epoch: 3 Auc: 0.566589 Maps: 0.699060 Max-Auc: 0.584627 Max-Maps: 0.708692
+[2024-06-27 16:29:37] {train.py:154} INFO - Epoch:4 Overall loss: 0.159575 
+[2024-06-27 16:29:37] {train.py:197} INFO - Epoch: 4 Auc: 0.567345 Maps: 0.695999 Max-Auc: 0.584627 Max-Maps: 0.708692
+[2024-06-27 16:29:43] {train.py:154} INFO - Epoch:5 Overall loss: 0.157846 
+[2024-06-27 16:29:44] {train.py:197} INFO - Epoch: 5 Auc: 0.596783 Maps: 0.714158 Max-Auc: 0.584627 Max-Maps: 0.708692
+[2024-06-27 16:29:44] {train.py:207} INFO - ***************** Epoch: 5 Max Auc: 0.596783 Maps: 0.714158 *******************
+[2024-06-27 16:29:50] {train.py:154} INFO - Epoch:6 Overall loss: 0.158117 
+[2024-06-27 16:29:50] {train.py:197} INFO - Epoch: 6 Auc: 0.600153 Maps: 0.713027 Max-Auc: 0.596783 Max-Maps: 0.714158
+[2024-06-27 16:29:50] {train.py:207} INFO - ***************** Epoch: 6 Max Auc: 0.600153 Maps: 0.714158 *******************
+[2024-06-27 16:29:56] {train.py:154} INFO - Epoch:7 Overall loss: 0.155490 
+[2024-06-27 16:29:57] {train.py:197} INFO - Epoch: 7 Auc: 0.600695 Maps: 0.715950 Max-Auc: 0.600153 Max-Maps: 0.714158
+[2024-06-27 16:29:57] {train.py:207} INFO - ***************** Epoch: 7 Max Auc: 0.600695 Maps: 0.715950 *******************
+[2024-06-27 16:30:03] {train.py:154} INFO - Epoch:8 Overall loss: 0.154519 
+[2024-06-27 16:30:03] {train.py:197} INFO - Epoch: 8 Auc: 0.598568 Maps: 0.708873 Max-Auc: 0.600695 Max-Maps: 0.715950
+[2024-06-27 16:30:09] {train.py:154} INFO - Epoch:9 Overall loss: 0.155015 
+[2024-06-27 16:30:10] {train.py:197} INFO - Epoch: 9 Auc: 0.602042 Maps: 0.712751 Max-Auc: 0.600695 Max-Maps: 0.715950
+[2024-06-27 16:30:10] {train.py:207} INFO - ***************** Epoch: 9 Max Auc: 0.602042 Maps: 0.715950 *******************
+[2024-06-27 16:30:16] {train.py:154} INFO - Epoch:10 Overall loss: 0.153219 
+[2024-06-27 16:30:16] {train.py:197} INFO - Epoch: 10 Auc: 0.598641 Maps: 0.707846 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:22] {train.py:154} INFO - Epoch:11 Overall loss: 0.152685 
+[2024-06-27 16:30:23] {train.py:197} INFO - Epoch: 11 Auc: 0.602023 Maps: 0.705934 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:29] {train.py:154} INFO - Epoch:12 Overall loss: 0.152813 
+[2024-06-27 16:30:29] {train.py:197} INFO - Epoch: 12 Auc: 0.586574 Maps: 0.695657 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:35] {train.py:154} INFO - Epoch:13 Overall loss: 0.151479 
+[2024-06-27 16:30:36] {train.py:197} INFO - Epoch: 13 Auc: 0.592205 Maps: 0.698351 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:42] {train.py:154} INFO - Epoch:14 Overall loss: 0.151104 
+[2024-06-27 16:30:42] {train.py:197} INFO - Epoch: 14 Auc: 0.601408 Maps: 0.709596 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:48] {train.py:154} INFO - Epoch:15 Overall loss: 0.151276 
+[2024-06-27 16:30:49] {train.py:197} INFO - Epoch: 15 Auc: 0.602754 Maps: 0.703539 Max-Auc: 0.602042 Max-Maps: 0.715950
+[2024-06-27 16:30:49] {train.py:207} INFO - ***************** Epoch: 15 Max Auc: 0.602754 Maps: 0.715950 *******************
+[2024-06-27 16:30:55] {train.py:154} INFO - Epoch:16 Overall loss: 0.149591 
+[2024-06-27 16:30:55] {train.py:197} INFO - Epoch: 16 Auc: 0.608599 Maps: 0.713504 Max-Auc: 0.602754 Max-Maps: 0.715950
+[2024-06-27 16:30:55] {train.py:207} INFO - ***************** Epoch: 16 Max Auc: 0.608599 Maps: 0.715950 *******************
+[2024-06-27 16:31:01] {train.py:154} INFO - Epoch:17 Overall loss: 0.149321 
+[2024-06-27 16:31:02] {train.py:197} INFO - Epoch: 17 Auc: 0.605352 Maps: 0.703774 Max-Auc: 0.608599 Max-Maps: 0.715950
+[2024-06-27 16:31:08] {train.py:154} INFO - Epoch:18 Overall loss: 0.149877 
+[2024-06-27 16:31:08] {train.py:197} INFO - Epoch: 18 Auc: 0.601753 Maps: 0.707545 Max-Auc: 0.608599 Max-Maps: 0.715950
+[2024-06-27 16:31:14] {train.py:154} INFO - Epoch:19 Overall loss: 0.150067 
+[2024-06-27 16:31:15] {train.py:197} INFO - Epoch: 19 Auc: 0.611758 Maps: 0.712697 Max-Auc: 0.608599 Max-Maps: 0.715950
+[2024-06-27 16:31:15] {train.py:207} INFO - ***************** Epoch: 19 Max Auc: 0.611758 Maps: 0.715950 *******************
+[2024-06-27 16:31:21] {train.py:154} INFO - Epoch:20 Overall loss: 0.148780 
+[2024-06-27 16:31:21] {train.py:197} INFO - Epoch: 20 Auc: 0.607147 Maps: 0.709003 Max-Auc: 0.611758 Max-Maps: 0.715950
+[2024-06-27 16:31:27] {train.py:154} INFO - Epoch:21 Overall loss: 0.149846 
+[2024-06-27 16:31:28] {train.py:197} INFO - Epoch: 21 Auc: 0.617197 Maps: 0.714564 Max-Auc: 0.611758 Max-Maps: 0.715950
+[2024-06-27 16:31:28] {train.py:207} INFO - ***************** Epoch: 21 Max Auc: 0.617197 Maps: 0.715950 *******************
+[2024-06-27 16:31:34] {train.py:154} INFO - Epoch:22 Overall loss: 0.148058 
+[2024-06-27 16:31:34] {train.py:197} INFO - Epoch: 22 Auc: 0.590703 Maps: 0.699887 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:31:40] {train.py:154} INFO - Epoch:23 Overall loss: 0.149493 
+[2024-06-27 16:31:41] {train.py:197} INFO - Epoch: 23 Auc: 0.598914 Maps: 0.704503 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:31:46] {train.py:154} INFO - Epoch:24 Overall loss: 0.148306 
+[2024-06-27 16:31:47] {train.py:197} INFO - Epoch: 24 Auc: 0.601749 Maps: 0.706923 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:31:53] {train.py:154} INFO - Epoch:25 Overall loss: 0.148659 
+[2024-06-27 16:31:54] {train.py:197} INFO - Epoch: 25 Auc: 0.586919 Maps: 0.700511 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:31:59] {train.py:154} INFO - Epoch:26 Overall loss: 0.147187 
+[2024-06-27 16:32:00] {train.py:197} INFO - Epoch: 26 Auc: 0.611021 Maps: 0.711292 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:32:06] {train.py:154} INFO - Epoch:27 Overall loss: 0.146945 
+[2024-06-27 16:32:07] {train.py:197} INFO - Epoch: 27 Auc: 0.615541 Maps: 0.710439 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:32:12] {train.py:154} INFO - Epoch:28 Overall loss: 0.146787 
+[2024-06-27 16:32:13] {train.py:197} INFO - Epoch: 28 Auc: 0.620301 Maps: 0.715474 Max-Auc: 0.617197 Max-Maps: 0.715950
+[2024-06-27 16:32:13] {train.py:207} INFO - ***************** Epoch: 28 Max Auc: 0.620301 Maps: 0.715950 *******************
+[2024-06-27 16:32:19] {train.py:154} INFO - Epoch:29 Overall loss: 0.148651 
+[2024-06-27 16:32:20] {train.py:197} INFO - Epoch: 29 Auc: 0.594714 Maps: 0.699129 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:25] {train.py:154} INFO - Epoch:30 Overall loss: 0.145786 
+[2024-06-27 16:32:26] {train.py:197} INFO - Epoch: 30 Auc: 0.603889 Maps: 0.702687 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:32] {train.py:154} INFO - Epoch:31 Overall loss: 0.146338 
+[2024-06-27 16:32:33] {train.py:197} INFO - Epoch: 31 Auc: 0.588733 Maps: 0.698086 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:38] {train.py:154} INFO - Epoch:32 Overall loss: 0.146129 
+[2024-06-27 16:32:39] {train.py:197} INFO - Epoch: 32 Auc: 0.619497 Maps: 0.708212 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:44] {train.py:154} INFO - Epoch:33 Overall loss: 0.144776 
+[2024-06-27 16:32:45] {train.py:197} INFO - Epoch: 33 Auc: 0.580841 Maps: 0.697711 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:51] {train.py:154} INFO - Epoch:34 Overall loss: 0.143835 
+[2024-06-27 16:32:52] {train.py:197} INFO - Epoch: 34 Auc: 0.605206 Maps: 0.708499 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:32:57] {train.py:154} INFO - Epoch:35 Overall loss: 0.143933 
+[2024-06-27 16:32:58] {train.py:197} INFO - Epoch: 35 Auc: 0.612176 Maps: 0.710927 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:33:04] {train.py:154} INFO - Epoch:36 Overall loss: 0.143770 
+[2024-06-27 16:33:05] {train.py:197} INFO - Epoch: 36 Auc: 0.605949 Maps: 0.707624 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:33:10] {train.py:154} INFO - Epoch:37 Overall loss: 0.141650 
+[2024-06-27 16:33:11] {train.py:197} INFO - Epoch: 37 Auc: 0.607313 Maps: 0.707389 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:33:16] {train.py:154} INFO - Epoch:38 Overall loss: 0.143916 
+[2024-06-27 16:33:17] {train.py:197} INFO - Epoch: 38 Auc: 0.596986 Maps: 0.700229 Max-Auc: 0.620301 Max-Maps: 0.715950
+[2024-06-27 16:33:17] {train.py:215} INFO - ***************** Max_Epoch: 28 Max Auc: 0.620301 Maps: 0.715950*******************

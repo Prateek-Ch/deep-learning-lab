@@ -83,7 +83,7 @@ if __name__ == "__main__":
     logger.info(args)
     os.makedirs(os.path.join(os.getcwd(), args.saved_dir), exist_ok = True)
 
-    encoder = GCNModel(args.input_dim,args.output_dim).cuda()
+    encoder = GCNModel(args.input_dim,args.output_dim,5,0.4).cuda()
     criterion = nn.MSELoss()
 
     with open(args.train_dir, 'rb') as files:
@@ -111,6 +111,7 @@ if __name__ == "__main__":
     max_auc = -1
     max_epoch = -1
     early_stop_counter = 0
+    # loop through epoch
     for epoch_num in range(args.epochs):
         batch_loss = []
         batch_contras_loss = []
@@ -119,6 +120,7 @@ if __name__ == "__main__":
 
         batch_index = 0
         random.shuffle(train_data)
+        # loop through batches
         for tmp_train in tqdm(train_data):
             batch_index += 1
             batch_data, _,_,_ = tmp_train

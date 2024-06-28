@@ -4,7 +4,7 @@ import pickle as pk
 from unidecode import unidecode
 import torch
 from torch_geometric.data.batch import Batch 
-import multiprocessing as mp
+import torch.multiprocessing as mp  # Use torch.multiprocessing instead of multiprocessing
 import re
 import argparse
 import os
@@ -195,14 +195,18 @@ def getdata(orcid):
                     list_edge_y.append(1)
                 else:
                     list_edge_y.append(0)
-    #build data
-    data = Batch(x=torch.tensor(features, dtype=torch.float32), 
-                edge_index=torch.tensor(edge_index), 
-                edge_attr=torch.tensor(total_weight, dtype = torch.float32),
-                y=torch.tensor(list_y) if list_y is not None else None,
-                batch=torch.tensor(batch))
-    assert torch.any(torch.isnan(data.x)) == False
-    edge_label = torch.tensor(list_edge_y) if trainset else None
+    
+    # Move tensors to GPU
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    data = Batch(
+        x=torch.tensor(features, dtype=torch.float32).to(device), 
+        edge_index=torch.tensor(edge_index).to(device), 
+        edge_attr=torch.tensor(total_weight, dtype=torch.float32).to(device),
+        y=torch.tensor(list_y).to(device) if list_y is not None else None,
+        batch=torch.tensor(batch).to(device)
+    )
+    assert not torch.any(torch.isnan(data.x))
+    edge_label = torch.tensor(list_edge_y).to(device) if trainset else None
 
     return (data,edge_label,orcid,all_pappers_id)
 
@@ -277,10 +281,10 @@ def norm(data):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--author_dir', type=str, default='dataset/train_author.json')
-    parser.add_argument('--pub_dir', type=str, default='dataset/pid_to_info_all.json')
-    parser.add_argument('--save_dir', type=str, default='dataset/train.pkl')
-    parser.add_argument('--embeddings_dir', type=str, default='dataset/roberta_embeddings.pkl')
+    parser.add_argument('--author_dir', type=str, default='../dataset/train_author.json')
+    parser.add_argument('--pub_dir', type=str, default='../dataset/pid_to_info_all.json')
+    parser.add_argument('--save_dir', type=str, default='../dataset/train.pkl')
+    parser.add_argument('--embeddings_dir', type=str, default='../dataset/roberta_embeddings.pkl')
     args = parser.parse_args()  
     with open(args.pub_dir, "r", encoding = "utf-8") as f:
         papers_info = js.load(f)

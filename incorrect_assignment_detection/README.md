@@ -53,7 +53,7 @@ python train.py  --train_dir ../dataset/train.pkl  --test_dir ../dataset/valid.p
 # Method 3: ChatGLM (Test Environment: 8 * A100)
 cd ChatGLM
 bash train.sh
-accelerate launch --num_processes 8 inference.py --lora_path your_lora_path --model_path your_model_path --pub_path  ../dataset/pid_to_info_all.json --eval_path ../dataset/ind_valid_author.json  # multi-GPU
+accelerate launch --num_processes 4 inference.py --lora_path output/text-20240618-200820-3e-5/checkpoint-2000 --model_path THUDM/chatglm3-6b-32k --pub_path  ../dataset/pid_to_info_all.json --eval_path ../dataset/ind_valid_author.json  # multi-GPU
 python inference.py --lora_path your_lora_checkpoint --model_path path_to_chatglm --pub_path ../dataset/pid_to_info_all.json  --eval_path ../dataset/ind_valid_author.json   # single GPU
 ```
 
@@ -61,8 +61,8 @@ python inference.py --lora_path your_lora_checkpoint --model_path path_to_chatgl
 
 |  Method  | AUC   |
 |-------|-------|
-| GCN  | 0.58625 |
-| GCCAD | 0.63451 |
+| GCN  | 0.58625 | --- 60.8275
+| GCCAD | 0.63451 | --- 69.41
 | ChatGLM  | 0.71385 |
 
 ## Citation
