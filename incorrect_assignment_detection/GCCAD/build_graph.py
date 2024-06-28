@@ -195,18 +195,15 @@ def getdata(orcid):
                     list_edge_y.append(1)
                 else:
                     list_edge_y.append(0)
-    
-    # Move tensors to GPU
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    data = Batch(
-        x=torch.tensor(features, dtype=torch.float32).to(device), 
-        edge_index=torch.tensor(edge_index).to(device), 
-        edge_attr=torch.tensor(total_weight, dtype=torch.float32).to(device),
-        y=torch.tensor(list_y).to(device) if list_y is not None else None,
-        batch=torch.tensor(batch).to(device)
-    )
-    assert not torch.any(torch.isnan(data.x))
-    edge_label = torch.tensor(list_edge_y).to(device) if trainset else None
+                    
+    #build data
+    data = Batch(x=torch.tensor(features, dtype=torch.float32), 
+                edge_index=torch.tensor(edge_index), 
+                edge_attr=torch.tensor(total_weight, dtype = torch.float32),
+                y=torch.tensor(list_y) if list_y is not None else None,
+                batch=torch.tensor(batch))
+    assert torch.any(torch.isnan(data.x)) == False
+    edge_label = torch.tensor(list_edge_y) if trainset else None
 
     return (data,edge_label,orcid,all_pappers_id)
 
