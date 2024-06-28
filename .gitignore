@@ -51,6 +51,7 @@ incorrect_assignment_detection/*/log
 incorrect_assignment_detection/*/*.pkl
 incorrect_assignment_detection/*/dataset/
 incorrect_assignment_detection/log
+incorrect_assignment_detection/dataset
 
 __pycache__/
 *.py[cod]
