@@ -6,17 +6,6 @@ from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModel
 import argparse
 from accelerate import Accelerator
-import torch.nn as nn
-
-class AttentionLayer(nn.Module):
-    def __init__(self, hidden_dim):
-        super(AttentionLayer, self).__init__()
-        self.attn = nn.Linear(hidden_dim, 1)
-
-    def forward(self, embeddings):
-        weights = torch.softmax(self.attn(embeddings), dim=1)
-        weighted_embeddings = embeddings * weights
-        return weighted_embeddings.sum(dim=1)
 
 def main(args):
     accelerator = Accelerator()
@@ -30,13 +19,7 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained('roberta-base')
     model = AutoModel.from_pretrained('roberta-base')
     
-    hidden_size = model.config.hidden_size
-    print("HIDDEN SIZE: ", hidden_size)
     model, tokenizer = accelerator.prepare(model, tokenizer)
-
-    # Initialize the attention layer
-    attention_layer = AttentionLayer(hidden_dim=hidden_size).to(accelerator.device)
-    attention_layer = accelerator.prepare(attention_layer)
     
     dic_paper_embedding = {}
     papers = [[key, value] for key, value in papers.items()]
@@ -51,7 +34,7 @@ def main(args):
 
         # Tokenize separately
         inputs_titles = tokenizer(titles, return_tensors="pt", padding=True, truncation=True, max_length=100)
-        inputs_abstracts = tokenizer(abstracts, return_tensors="pt", padding=True, truncation=True, max_length=200)
+        inputs_abstracts = tokenizer(abstracts, return_tensors="pt", padding=True, truncation=True, max_length=300)
         inputs_keywords = tokenizer(keywords, return_tensors="pt", padding=True, truncation=True, max_length=50)
 
         # Move inputs to accelerator device
@@ -69,9 +52,9 @@ def main(args):
         embeddings_abstracts = outputs_abstracts.last_hidden_state[:, 0, :]
         embeddings_keywords = outputs_keywords.last_hidden_state[:, 0, :]
 
-        # Stack embeddings and apply attention
+        # Average embeddings
         embeddings_stack = torch.stack((embeddings_titles, embeddings_abstracts, embeddings_keywords), dim=1)
-        embeddings_combined = attention_layer(embeddings_stack).detach().cpu().numpy()
+        embeddings_combined = embeddings_stack.mean(dim=1).detach().cpu().numpy()
         
         for jj in range(ii, ii + len(batch_papers)):
             paper_id = papers[jj][0]
