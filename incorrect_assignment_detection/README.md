@@ -59,9 +59,9 @@ python inference.py --lora_path your_lora_checkpoint --model_path path_to_chatgl
 
 ## Results on Valiation Set
 
-|  Method  | AUC   |
+|  Method  | AUC   | --- Concat ---- Attention Layer --- Average
 |-------|-------|
-| GCN  | 0.58625 | --- 62.0301
+| GCN  | 0.58625 | --- 62.0301 --- 61.8 --- 60.98
 | GCCAD | 0.63451 | --- 73.37
 | ChatGLM  | 0.71385 |
 
