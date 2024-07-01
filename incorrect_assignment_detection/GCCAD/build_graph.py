@@ -170,6 +170,8 @@ def getdata(orcid):
     list_x = [dic_paper_embedding[x] for x in all_pappers_id]
     features = np.stack(list_x)
     
+    print(features.shape)
+
     # node labels
     if trainset:
         list_y = len(normal_papers_id) * [1] + len(outliers_id) * [0]
@@ -202,6 +204,7 @@ def getdata(orcid):
                 edge_attr=torch.tensor(total_weight, dtype = torch.float32),
                 y=torch.tensor(list_y) if list_y is not None else None,
                 batch=torch.tensor(batch))
+    print(data)
     assert torch.any(torch.isnan(data.x)) == False
     edge_label = torch.tensor(list_edge_y) if trainset else None
 
@@ -212,7 +215,7 @@ def build_dataset(path):
     keys_list = list(author_names.keys())
     
 
-    with mp.Pool(processes=10) as pool:
+    with mp.Pool(processes=20) as pool:
         results = pool.map(getdata,keys_list)
     with open(path, "wb") as f:
         pk.dump(results, f)
@@ -287,7 +290,7 @@ if __name__ == "__main__":
         papers_info = js.load(f)
 
     # clean pub, if needed
-    with mp.Pool(processes=10) as pool:
+    with mp.Pool(processes=20) as pool:
         results = pool.map(norm,[value for _,value  in papers_info.items()])
     papers_info = {k:v for k,v in zip(papers_info.keys(),results)}
     print('done clean pubs')

@@ -62,7 +62,7 @@ python inference.py --lora_path your_lora_checkpoint --model_path path_to_chatgl
 |  Method  | AUC   |
 |-------|-------|
 | GCN  | 0.58625 | --- 62.0301
-| GCCAD | 0.63451 | --- 69.41
+| GCCAD | 0.63451 | --- 73.37
 | ChatGLM  | 0.71385 |
 
 ## Citation
