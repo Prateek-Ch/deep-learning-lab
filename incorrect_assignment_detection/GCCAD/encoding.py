@@ -6,6 +6,24 @@ from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModel
 import argparse
 from accelerate import Accelerator
+import torch.nn as nn
+import torch.nn.functional as F
+
+class AttentionLayer(nn.Module):
+    def __init__(self, hidden_dim):
+        super(AttentionLayer, self).__init__()
+        self.attention_weights = nn.Parameter(torch.Tensor(hidden_dim, hidden_dim))
+        self.query = nn.Parameter(torch.Tensor(hidden_dim))
+        nn.init.xavier_uniform_(self.attention_weights)
+        nn.init.uniform_(self.query, -1, 1)
+
+    def forward(self, inputs):
+        # inputs shape: (batch_size, num_sections, hidden_dim)
+        scores = torch.tanh(torch.matmul(inputs, self.attention_weights))
+        scores = torch.matmul(scores, self.query)
+        attention_weights = F.softmax(scores, dim=1)
+        weighted_sum = torch.sum(inputs * attention_weights.unsqueeze(-1), dim=1)
+        return weighted_sum
 
 def main(args):
     accelerator = Accelerator()
@@ -18,8 +36,12 @@ def main(args):
     # Initialize RoBERTa tokenizer and model
     tokenizer = AutoTokenizer.from_pretrained('roberta-base')
     model = AutoModel.from_pretrained('roberta-base')
+    hidden_dim = model.config.hidden_size
 
     model, tokenizer = accelerator.prepare(model, tokenizer)
+
+    attention_layer = AttentionLayer(hidden_dim).to(accelerator.device)
+    attention_layer = accelerator.prepare(attention_layer)
 
     dic_paper_embedding = {}
     papers = [[key, value] for key, value in papers.items()]
@@ -52,10 +74,11 @@ def main(args):
         embeddings_abstracts = outputs_abstracts.last_hidden_state[:, 0, :]
         embeddings_keywords = outputs_keywords.last_hidden_state[:, 0, :]
 
-        # Average embeddings
-        embeddings_combined = (embeddings_titles + embeddings_abstracts + embeddings_keywords) / 3.0
+        # Stack embeddings
+        embeddings_stack = torch.stack((embeddings_titles, embeddings_abstracts, embeddings_keywords), dim=1)
 
-        embeddings_combined = embeddings_combined.detach().cpu().numpy()
+        # Apply attention layer
+        embeddings_combined = attention_layer(embeddings_stack).detach().cpu().numpy()
 
         tt = 0
         for jj in range(ii, ii + len(batch_papers)):
